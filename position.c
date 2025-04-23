@@ -1,25 +1,22 @@
 #include <stdio.h>
-
-int get_letter_position(char c) {
-    if (c >= 'a' && c <= 'z') {
-        return c - 'a' + 1;
-    }
-    if (c >= 'A' && c <= 'Z') {
-        return c - 'A' + 1;
-    }
-    return -1; // Не буква английского алфавита
-}
+#include <string.h>
 
 int main() {
-    char letter = 'L'; // Может быть в любом регистре
-    int position = get_letter_position(letter);
+    char abc[] = "abcdefghijklmnopqrstuvwxyz";
+    char target = 'l'; // Искомая буква
+    int pos = -1;
 
-    if (position > 0) {
-        printf("Буква '%c' находится на позиции %d в алфавите\n", 
-               letter, position);
+    for (int counter = 0; counter < strlen(abc); counter++) {
+        if (abc[counter] == target) {
+            pos = counter + 1;
+            break;
+        }
+    }
+
+    if (pos != -1) {
+        printf("Буква '%c' находится на позиции %d в алфавите\n", target, pos);
     } else {
-        printf("Символ '%c' не является буквой английского алфавита\n", 
-               letter);
+        printf("Буква '%c' не найдена в алфавите\n", target);
     }
 
     return 0;
